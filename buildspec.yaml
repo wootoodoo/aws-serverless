@@ -6,7 +6,7 @@ phases:
   build:
     commands:
       - cd /root
-      - mkdir -p mxnet/python pillow/python keras/python scipy/python gluoncv/python sklearn/python xgboost/python numpy/python
+      - mkdir -p mxnet/python pillow/python keras/python scipy/python gluoncv/python xgboost/python numpy/python
       - python3 -m pip install --user pip --upgrade
       - python3 -m pip install --user virtualenv
       - python3 -m virtualenv MXNet
@@ -18,7 +18,7 @@ phases:
       - rm -rf mxnet/python/wheel*
       - rm -rf mxnet/python/setuptools*
       - rm -rf mxnet/python/pkg_resources
-      - pip install keras-mxnet==2.2.4.1 Pillow==6.0.0 gluonnlp==0.6.0 gluoncv==0.4.0.post0 scikit-learn==0.21.3 matplotlib==3.0.3 six==1.12.0 cycler==0.10.0 kiwisolver==1.1.0 pyparsing==2.4.0
+      - pip install keras-mxnet==2.2.4.1 Pillow==6.0.0 gluoncv==0.4.0.post0 matplotlib==3.0.3 six==1.12.0 cycler==0.10.0 kiwisolver==1.1.0 pyparsing==2.4.0
       - rm -rf $(find MXNet/lib/python3.7/site-packages/ -name tests)
       - cp -r MXNet/lib/python3.7/site-packages/six* keras/python
       - cp -r MXNet/lib/python3.7/site-packages/h5py* keras/python
@@ -36,9 +36,6 @@ phases:
       - cp -r MXNet/lib/python3.7/site-packages/tqdm* gluoncv/python
       - cp -r MXNet/lib/python3.7/site-packages/matplotlib* gluoncv/python
       - cp -r MXNet/lib/python3.7/site-packages/mpl_toolkits* gluoncv/python
-      - cp -r MXNet/lib/python3.7/site-packages/sklearn* sklearn/python
-      - cp -r MXNet/lib/python3.7/site-packages/joblib* sklearn/python
-      - cp -r MXNet/lib/python3.7/site-packages/numpy* sklearn/python
 artifacts:
   name: mxnet
   base-directory: /root/mxnet
@@ -63,11 +60,6 @@ artifacts:
       discard-paths: no
     gluoncv:
       base-directory: /root/gluoncv
-      files:
-        - '**/*'
-      discard-paths: no
-    sklearn:
-      base-directory: /root/sklearn
       files:
         - '**/*'
       discard-paths: no
